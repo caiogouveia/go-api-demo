@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "7d8eabff-61b9-4df2-932f-cd0366d1e9ff",
+		"name": "GoLangAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32977478"
+	},
+	"item": [
+		{
+			"name": "/ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/ping",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/veiculos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/veiculos",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"veiculos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/criarveiculo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"MARCA\": \"MERCEDES\",\n        \"PLACA\": \"BBB-7621\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/criarveiculo",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"criarveiculo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/veiculobyid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/veiculo/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"veiculo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
