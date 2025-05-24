@@ -20,6 +20,9 @@ func (pr *VeiculoRepository) GetVeiculos() ([]model.Veiculo, error) {
 	query := "SELECT * FROM veiculo"
 	rows, err := pr.connection.Query(query)
 
+	fmt.Println("Hello World!")
+	fmt.Println(rows)
+
 	if err != nil {
 		fmt.Println(err)
 		return nil, err

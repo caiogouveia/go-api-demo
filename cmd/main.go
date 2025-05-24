@@ -43,6 +43,8 @@ func main() {
 	//Endpoints POST
 	server.POST("/criarveiculo", VeiculoController.CreateVeiculo)
 
+	server.GET("/teste/:param", VeiculoController.Teste)
+
 	//Run server
 
 	server.Run(":8000")

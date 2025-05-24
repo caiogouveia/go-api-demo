@@ -5,7 +5,6 @@ import (
 	"goapidemo/usecase"
 	"net/http"
 	"strconv"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,6 +19,10 @@ func NewVeiculoController(usecase usecase.VeiculoUsecase) veiculoController {
 	}
 }
 
+/**
+ * GetVeiculos
+ * @param ctx
+ */
 func (p *veiculoController) GetVeiculos(ctx *gin.Context) {
 	veiculos, err := p.veiculoUsecase.GetVeiculos()
 	if err != nil {
@@ -32,6 +35,10 @@ func (p *veiculoController) GetVeiculos(ctx *gin.Context) {
 
 }
 
+/**
+ * CreateVeiculo
+ * @param ctx
+ */
 func (p *veiculoController) CreateVeiculo(ctx *gin.Context) {
 	var veiculo model.Veiculo
 	err := ctx.BindJSON(&veiculo)
@@ -48,9 +55,14 @@ func (p *veiculoController) CreateVeiculo(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, insertedVeiculo)
 }
 
+/**
+ * GetVeiculoById
+ * @param ctx
+ */
 func (p *veiculoController) GetVeiculoById(ctx *gin.Context) {
 	id := ctx.Param("veiculoId")
 
+	// valida se o id foi informado
 	if id == "" {
 		response := model.Response{Message: "ID do veiculo não informado"} //gin.H{"message": "ID do veiculo não informado"})
 
@@ -58,6 +70,8 @@ func (p *veiculoController) GetVeiculoById(ctx *gin.Context) {
 		return
 	}
 
+	// converte o id para int
+	// id vem como string da interwebz
 	idveiculo, err := strconv.Atoi(id)
 	if err != nil {
 		response := model.Response{Message: "ID do veiculo precisa ser um int"} //gin.H{"message": "ID do veiculo não informado"})
@@ -65,6 +79,7 @@ func (p *veiculoController) GetVeiculoById(ctx *gin.Context) {
 		return
 	}
 
+	// busca o veiculo no banco
 	veiculo, err := p.veiculoUsecase.GetVeiculoById(idveiculo)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, err)
@@ -81,4 +96,11 @@ func (p *veiculoController) GetVeiculoById(ctx *gin.Context) {
 	//http faz ref. ao pacote net/http
 	ctx.JSON(http.StatusOK, veiculo)
 
+}
+
+// tem dois parametros
+func (p *veiculoController) Teste(ctx *gin.Context) {
+
+	id := ctx.Param("param")
+	ctx.JSON(http.StatusOK, "parametros de teste: "+id)
 }
